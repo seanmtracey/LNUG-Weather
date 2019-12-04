@@ -1,0 +1,42 @@
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+
+<button id="wevvaplz">
+ WEVVA ME PLZ!
+</button>
+
+<audio src="/sounds/wevva.wav" autoplay loop></audio>
+
+<script>
+
+    (function(){
+
+        console.log('lol');
+
+        const weatherBtn = document.querySelector('button#wevvaplz')
+
+        console.log(weatherBtn);
+
+        weatherBtn.addEventListener('click', (e) => {
+            
+            e.preventDefault();
+            e.stopImmediatePropagation();
+
+            navigator.geolocation.getCurrentPosition((e) => {
+
+                const result = e;
+                const latitude = result.coords.latitude;
+                const longitude = result.coords.longitude;
+
+                console.log(`You are at ${latitude}, ${longitude}`);
+
+                window.location = `${window.location.origin}/wevva?latitude=${latitude}&longitude=${longitude}`;
+
+            }, (err) => console.log(err), {})
+
+        }, false);
+
+
+    }());
+
+</script>
